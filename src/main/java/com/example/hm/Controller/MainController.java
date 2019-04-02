@@ -5,6 +5,7 @@ import com.example.hm.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ public class MainController {
     private UserRepository userRepository;
 
     @GetMapping(path="/add") // Map ONLY GET Requests
+    @Transactional
     public @ResponseBody String addNewUser (@RequestParam String name
             , @RequestParam String email) {
         // @ResponseBody means the returned String is the response, not a view name
@@ -35,5 +37,10 @@ public class MainController {
     public @ResponseBody Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
+    }
+
+    @GetMapping(path="/name")
+    public  @ResponseBody User getUsersByName(@RequestParam String name){
+        return userRepository.findByName(name);
     }
 }
