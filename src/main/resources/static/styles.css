@@ -1,0 +1,16 @@
+.class2{
+    background: aquamarine;
+    color: white;
+    padding: 5px;
+    margin: 2px;
+}
+.class1{
+    font-size: x-large;
+}
+
+.favorites{
+    background: grey;
+    color: white;
+    border: thin solid black;
+    padding: 0.2em;
+}
